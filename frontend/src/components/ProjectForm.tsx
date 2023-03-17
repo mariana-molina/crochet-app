@@ -1,6 +1,7 @@
-import React, { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
+import { createNewProject, getProjects } from '../api';
 
-export const ProjectForm = ({ addNewProject }: any) => {
+export const ProjectForm = ({ setProjects, selectValue }: any) => {
 	const [projectName, setProjectName] = useState('');
 	const [videoLink, setVideoLink] = useState('');
 	const [yarn, setYarn] = useState('');
@@ -8,17 +9,26 @@ export const ProjectForm = ({ addNewProject }: any) => {
 	const [category, setCategory] = useState('Clothes');
 	const [pattern, setPattern] = useState('');
 
-	const handleSubmit = (e: SyntheticEvent) => {
+	const handleSubmit = async (e: SyntheticEvent) => {
 		e.preventDefault();
 		const newProject = {
-			projectName: projectName,
-			videoLink: videoLink,
-			yarn: yarn,
-			needles: needles,
-			category: category,
-			pattern: pattern,
+			id: crypto.randomUUID(),
+			projectName,
+			videoLink,
+			yarn,
+			needles,
+			category,
+			pattern,
 		};
-		addNewProject(newProject);
+		await createNewProject(newProject);
+		getProjects(setProjects, selectValue);
+
+		setProjectName('');
+		setVideoLink('');
+		setYarn('');
+		setNeedles('');
+		setCategory('Clothes');
+		setPattern('');
 	};
 
 	return (

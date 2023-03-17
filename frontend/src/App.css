@@ -126,13 +126,10 @@ html {
 		line-height: 50px;
 	}
 }
-.project-area__card {
-	display: flex;
-	flex-wrap: wrap row;
-	margin-inline: 30px;
-}
+
 .project-card__text {
 	padding-inline: 15px;
+	overflow: scroll;
 }
 
 .project-area {
@@ -140,11 +137,11 @@ html {
 	border-radius: 10px;
 	width: 300px;
 }
-.project-area__delete {
+.project-area__buttons {
 	display: flex;
 	justify-content: flex-end;
 }
-.project-area__buttons {
+.project-area__checked {
 	display: flex;
 	justify-content: flex-end;
 }
@@ -165,8 +162,7 @@ html {
 	cursor: pointer;
 	border: none;
 	font-size: 20px;
-	transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-	height: 45px;
+	height: 37px;
 	width: 45px;
 }
 .project-button__delete {
@@ -183,4 +179,11 @@ html {
 .fa-pen-to-square,
 .fa-x {
 	pointer-events: none;
+}
+
+.all-projects-area {
+	display: flex;
+	flex-flow: wrap row;
+	margin-inline: 30px;
+	gap: 30px;
 }
