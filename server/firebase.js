@@ -1,19 +1,15 @@
-// Import the functions you need from the SDKs you need
+const dotenv = require('dotenv');
 const { initializeApp } = require('firebase/app');
-// const { getAnalytics } = require('firebase/analytics');´
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+dotenv.config();
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-	apiKey: 'AIzaSyAb-suUZ5ERK5K2D6BHh4BXbl2R0VkvIAg',
-	authDomain: 'crochet-fullstack.firebaseapp.com',
-	projectId: 'crochet-fullstack',
-	storageBucket: 'crochet-fullstack.appspot.com',
-	messagingSenderId: '455770251273',
-	appId: '1:455770251273:web:3ec718971e28c2b16a98d8',
-	measurementId: 'G-P23HQ468TZ',
+	apiKey: process.env.API_KEY,
+	authDomain: process.env.AUTH_DOM,
+	projectId: process.env.PROJECT_ID,
+	storageBucket: process.env.STORAGE_BUCKET,
+	messagingSenderId: process.env.MESSEGE_ID,
+	appId: process.env.APP_ID,
+	measurementId: process.env.MESUAREMENT_ID,
 };
 
 // Initialize Firebase

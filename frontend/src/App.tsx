@@ -11,9 +11,13 @@ function App() {
 	return (
 		<div className="App">
 			<header className="header">
-				<h1 className="header__title">StitchStash</h1>
+				<h1 className="header__title">
+					StitchStash{' '}
+					<img className="logo" src="./output-onlinepngtools.png" alt="" />
+				</h1>
+
 				<nav className="header__nav">
-					<h3>log in/Register</h3>
+					<h3>Log in/Register</h3>
 				</nav>
 			</header>
 			<div>

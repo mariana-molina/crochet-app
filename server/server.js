@@ -31,7 +31,6 @@ app.get('/', async (req, res) => {
 app.get('/:category', async (req, res) => {
 	const category = req.params.category;
 	const projectsRef = collection(store, 'projects');
-
 	const q = query(projectsRef, where('category', '==', category));
 	const querySnapshot = await getDocs(q);
 	res.status(200).json({
@@ -40,7 +39,6 @@ app.get('/:category', async (req, res) => {
 });
 app.post('/', async (req, res) => {
 	const newProject = req.body;
-	// Add a new document in collection "cities"
 	const snapshot = await setDoc(
 		doc(store, 'projects', newProject.id),
 		newProject
@@ -49,13 +47,15 @@ app.post('/', async (req, res) => {
 		data: snapshot,
 	});
 });
+
 app.delete('/', async (req, res) => {
 	const projectId = req.body.id;
-	const snapshot = await deleteDoc(doc(store, 'projects', projectId));
+	await deleteDoc(doc(store, 'projects', projectId));
 	res.status(200).json({
-		data: snapshot,
+		message: 'Project succesfully deleted',
 	});
 });
+
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
 });

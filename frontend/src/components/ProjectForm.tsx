@@ -8,6 +8,8 @@ export const ProjectForm = ({ setProjects, selectValue }: any) => {
 	const [needles, setNeedles] = useState('');
 	const [category, setCategory] = useState('Clothes');
 	const [pattern, setPattern] = useState('');
+	const [invalidNameInput, setInvalidNameInput] = useState('');
+	const [invalidPatternInput, setInvalidPatternInput] = useState('');
 
 	const handleSubmit = async (e: SyntheticEvent) => {
 		e.preventDefault();
@@ -20,15 +22,23 @@ export const ProjectForm = ({ setProjects, selectValue }: any) => {
 			category,
 			pattern,
 		};
-		await createNewProject(newProject);
-		getProjects(setProjects, selectValue);
+		if (projectName && pattern) {
+			await createNewProject(newProject);
 
-		setProjectName('');
-		setVideoLink('');
-		setYarn('');
-		setNeedles('');
-		setCategory('Clothes');
-		setPattern('');
+			getProjects(setProjects, selectValue);
+			setProjectName('');
+			setVideoLink('');
+			setYarn('');
+			setNeedles('');
+			setCategory('Clothes');
+			setPattern('');
+		}
+		if (!projectName) {
+			setInvalidNameInput('Please fill here');
+		}
+		if (!pattern) {
+			setInvalidPatternInput('Please fill here');
+		}
 	};
 
 	return (
@@ -37,14 +47,19 @@ export const ProjectForm = ({ setProjects, selectValue }: any) => {
 				<h2>Add a new project</h2>
 				<form onSubmit={handleSubmit} className="form-area__form">
 					<input
-						placeholder="Project name"
+						placeholder="(*) Project name"
 						id="addname"
 						type="text"
 						value={projectName}
 						onChange={e => setProjectName(e.target.value)}
 						className="form-area__form__input"
+						onFocus={() => {
+							setInvalidNameInput('');
+						}}
 					></input>
-
+					{invalidNameInput && (
+						<p className="invalid-input">{invalidNameInput}</p>
+					)}
 					<input
 						placeholder="Video Link"
 						id="addvideo"
@@ -80,11 +95,17 @@ export const ProjectForm = ({ setProjects, selectValue }: any) => {
 						<option>Other</option>
 					</select>
 					<textarea
-						placeholder="Pattern"
+						placeholder="(*)Pattern"
 						value={pattern}
 						onChange={e => setPattern(e.target.value)}
 						className="form-area__form__input"
+						onFocus={() => {
+							setInvalidPatternInput('');
+						}}
 					></textarea>
+					{invalidPatternInput && (
+						<p className="invalid-input">{invalidPatternInput}</p>
+					)}
 					<button
 						onSubmit={handleSubmit}
 						className="button-75"

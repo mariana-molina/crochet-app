@@ -1,7 +1,7 @@
 import { deleteProject, getProjects } from '../api';
 
 export const ProjectCard = ({ project, setProjects, selectValue }: any) => {
-	const { id, projectName, category, pattern } = project;
+	const { id, projectName, category, yarn, needle, pattern } = project;
 
 	const handleDelete = async () => {
 		await deleteProject(id);
@@ -25,8 +25,8 @@ export const ProjectCard = ({ project, setProjects, selectValue }: any) => {
 				<div className="project-card__text">
 					<h3>{projectName}</h3>
 					<p>{category}</p>
-					<p>bulky yarn 3 units</p>
-					<p>needle nr 5</p>
+					<p>{yarn}</p>
+					<p>{needle}</p>
 					<p>{pattern}</p>
 				</div>
 				<span className="project-area__checked">

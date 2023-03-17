@@ -5,15 +5,16 @@ export const createNewProject = async newProject => {
 		.then(response => {
 			console.log(response);
 		})
-		.catch(error => console.log(`${error}: Error fetching bootcamp data`));
+		.catch(error => console.log(`${error}: Error fetching project data`));
 };
+
 const getAllProjects = async setProjects => {
 	await axios
 		.get('http://localhost:3000/')
 		.then(response => {
 			setProjects(response.data);
 		})
-		.catch(error => console.log(`${error}: Error fetching bootcamp data`));
+		.catch(error => console.log(`${error}: Error fetching project data`));
 };
 const getProjectsByCategory = async (setProjects, category) => {
 	await axios
@@ -21,18 +22,18 @@ const getProjectsByCategory = async (setProjects, category) => {
 		.then(response => {
 			setProjects(response.data);
 		})
-		.catch(error => console.log(`${error}: Error fetching bootcamp data`));
+		.catch(error => console.log(`${error}: Error fetching project data`));
 };
 export const deleteProject = async projectId => {
 	await axios
 		.delete('http://localhost:3000/', {
-			headers: { Authorization: '***' },
+			headers: { 'Content-Type': 'application/json' },
 			data: { id: projectId },
 		})
 		.then(response => {
 			console.log(response);
 		})
-		.catch(error => console.log(`${error}: Error fetching bootcamp data`));
+		.catch(error => console.log(`${error}: Error fetching project data`));
 };
 export const getProjects = (setProjects, category) => {
 	if (category === 'All') {

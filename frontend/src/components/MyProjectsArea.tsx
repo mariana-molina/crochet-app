@@ -3,7 +3,7 @@ import { ProjectCard } from './ProjectCard';
 export const MyProjectsArea = ({ projects, setProjects, selectValue }: any) => {
 	return (
 		<>
-			<h2>My projects:</h2>
+			<h2 className="project-area__title">My projects</h2>
 			<div className="all-projects-area">
 				{projects.data?.map((project: any) => {
 					return (

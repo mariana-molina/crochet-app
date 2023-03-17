@@ -12,8 +12,11 @@ export const FilterProjects = ({
 
 	return (
 		<div className="filter-area">
-			<label htmlFor="filterproject">Filter by:</label>
+			<label className="filter-label" htmlFor="filterproject">
+				Filter by:
+			</label>
 			<select
+				className="filter-input"
 				value={selectValue}
 				id="filterproject"
 				onChange={e => setSelectValue(e.target.value)}
